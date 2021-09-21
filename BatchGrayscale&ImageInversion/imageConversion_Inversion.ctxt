@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=imageConversion_Inversion
+comment1.params=inImage
+comment1.target=edu.duke.ImageResource\ convertGray(edu.duke.ImageResource)
+comment2.params=
+comment2.target=void\ selectForGray()
+numComments=3
