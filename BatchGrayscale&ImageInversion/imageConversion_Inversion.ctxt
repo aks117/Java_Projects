@@ -2,6 +2,10 @@
 comment0.target=imageConversion_Inversion
 comment1.params=inImage
 comment1.target=edu.duke.ImageResource\ convertGray(edu.duke.ImageResource)
-comment2.params=
-comment2.target=void\ selectForGray()
-numComments=3
+comment2.params=inImage
+comment2.target=edu.duke.ImageResource\ imageInverter(edu.duke.ImageResource)
+comment3.params=
+comment3.target=void\ selectForGray()
+comment4.params=
+comment4.target=void\ selectForInvert()
+numComments=5

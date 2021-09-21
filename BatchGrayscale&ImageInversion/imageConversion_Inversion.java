@@ -29,21 +29,62 @@ public class imageConversion_Inversion {
         return outImage;
     }
     
-    public void selectForGray () {
+        public ImageResource imageInverter (ImageResource inImage) {
+            ImageResource outImage = new ImageResource(inImage.getWidth(), inImage.getHeight());
+            
+            for ( Pixel pixel : outImage.pixels()) {
+                Pixel inPixel = inImage.getPixel(pixel.getX(), pixel.getY());
+                
+                int inRed = inPixel.getRed();
+                int newRed = 255-inRed;
+                pixel.setRed(newRed);
+                
+                int inBlue = inPixel.getBlue();
+                int newBlue = 255-inBlue;
+                pixel.setBlue(newBlue);
+                
+                int inGreen = inPixel.getGreen();
+                int newGreen = 255-inGreen;
+                pixel.setGreen(newGreen);            
+                
+                
+            }
+            
+            return outImage;
+    }
+    
+        public void selectForGray () {
+            DirectoryResource dr = new DirectoryResource();
+            
+            for ( File f : dr.selectedFiles()) {
+                
+                ImageResource inImage = new ImageResource(f);
+                ImageResource gray = convertGray(inImage);
+                
+                String fName = inImage.getFileName();
+                String newName = "grey-" + fName;
+                gray.setFileName(newName);
+                
+                gray.draw();
+                gray.save();
+                
+            }
+    }
+    
+    public void selectForInvert () {
         DirectoryResource dr = new DirectoryResource();
         
         for ( File f : dr.selectedFiles()) {
             
             ImageResource inImage = new ImageResource(f);
-            ImageResource gray = convertGray(inImage);
+            ImageResource inverted = imageInverter(inImage);
             
             String fName = inImage.getFileName();
-            String newName = "grey-" + fName;
-            gray.setFileName(newName);
+            String newName = "inverted-" + fName;
+            inverted.setFileName(newName);
             
-            gray.draw();
-            gray.save();
-            
+            inverted.draw();
+            inverted.save();
         }
     }
 
